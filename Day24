@@ -1,0 +1,60 @@
+https://drive.google.com/drive/folders/1dM5YIC_gzGQQl4WbXksB7C_O1LeLrJn7
+
+
+#Tuples
+rides = ( 
+    (101, "Ravi", "Bangalore", 250, 4.5),
+    (102, "Anjali", "Hyderabad", 180, 4.2),
+    (103, "Kiran", "Bangalore", 300, 4.8), 
+    (104, "Meena", "Chennai", 220, 4.0), 
+    (105, "Arjun", "Bangalore", 150, 3.9) 
+)
+
+print(rides)
+((101, 'Ravi', 'Bangalore', 250, 4.5), (102, 'Anjali', 'Hyderabad', 180, 4.2), (103, 'Kiran', 'Bangalore', 300, 4.8),(104, 'Meena', 'Chennai', 220, 4.0), (105, 'Arjun', 'Bangalore', 150, 3.9))
+1#1. Count total rides 
+print(len(rides))
+5
+2.#2.Print only tuples where city = "Bangalore" 
+for ride in rides:
+    if ride[2] == "Bangalore":
+        print(ride)
+(101, 'Ravi', 'Bangalore', 250, 4.5)
+(103, 'Kiran', 'Bangalore', 300, 4.8)
+(105, 'Arjun', 'Bangalore', 150, 3.9)
+
+#3.Find total revenue from Bangalore ----Sum of fares where city is Bangalore
+rides = (
+    (101, "Ravi", "Bangalore", 250, 4.5),
+    (102, "Anjali", "Hyderabad", 180, 4.2),
+    (103, "Kiran", "Bangalore", 300, 4.8), 
+    (104, "Meena", "Chennai", 220, 4.0), 
+    (105, "Arjun", "Bangalore", 150, 3.9) 
+)
+
+total = sum(ride[3] for ride in rides if ride[2] == "Bangalore")
+
+print(total)
+700
+
+4.4.Find highest rated driver --------- Print the tuple with maximum rating
+highest_rated_driver= rides[0]
+for ride in rides:
+    if ride[4] > highest_rated_driver[4]:
+      highest_rated_driver = ride
+print(highest_rated_driver)
+(103, 'Kiran', 'Bangalore', 300, 4.8)
+#5. Average rating per city 
+result = {}
+
+for c in set(r[2] for r in rides):
+    ratings = [r[4] for r in rides if r[2] == c]
+    result[c] = round(sum(ratings)/len(ratings), 1)
+
+for k, v in result.items():
+    print(f'"{k}": {v},')
+----"Bangalore": 4.4,
+"Hyderabad": 4.2,
+"Chennai": 4.0,---
+
+
